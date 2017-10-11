@@ -22,7 +22,7 @@ public class DistributedObjectView : MonoBehaviour
 				value = 0f;
 			}
 			x = value;
-			transform.position = new Vector3(x + distributedObject.ZeroX, transform.position.y, transform.position.z);
+			transform.position = new Vector3(x + Manager.ZERO_X, transform.position.y, transform.position.z);
 		}
 	}
 

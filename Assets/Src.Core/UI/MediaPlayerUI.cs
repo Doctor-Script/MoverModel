@@ -6,11 +6,14 @@ public class MediaPlayerUI : MonoBehaviour
 {
 	public float maxTime;
 
+	public Text timeText;
+
 	public Button stepBackButton;
 	public Button pauseButton;
 	public Button stepForwardButton;
 	public Slider slider;
 
+	[SerializeField]
 	private bool play = true;
 
 	void Start()
@@ -27,6 +30,9 @@ public class MediaPlayerUI : MonoBehaviour
 	{
 		if (play) {
 			slider.value += Time.deltaTime;
+		}
+		if (timeText != null) {
+			timeText.text = string.Format("{0:F2}", slider.value);
 		}
 	}
 	

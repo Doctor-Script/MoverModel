@@ -5,7 +5,7 @@ public class Ship : DistributedObjectView
 	private float speed = 1f;
 
 	public override void SetPosition(Vector3 position) {
-		transform.position = new Vector3(Distributed.ZeroX, position.y + 1f, position.z);
+		base.SetPosition(position + new Vector3(0f, 1f, 0f));
 	}
 
 	public class MoveCommand : DistributedCommand<Ship>

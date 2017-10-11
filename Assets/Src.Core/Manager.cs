@@ -11,7 +11,7 @@ public class Manager : MonoBehaviour
 
 	public MediaPlayerUI playerUI;
 
-	public readonly float zeroX = -7;
+	public const float ZERO_X = -8;
 
 	private List<DistributedObject> units = new List<DistributedObject>();
 	private List<DistributedCommand> commands = new List<DistributedCommand>();
