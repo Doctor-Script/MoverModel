@@ -18,7 +18,7 @@ public class PointEffect : DistributedObjectView
 	{
 		public SpawnCommand(DistributedObjectView sender, float time) : base(sender, time) { }
 
-		public override void UpdateTime(PointEffect view, float time, float startTime) {
+		public override void UpdateTime(PointEffect view, float time, float startTime, float lag) {
 			view.startTime = startTime;
 		}
 	}
@@ -27,7 +27,7 @@ public class PointEffect : DistributedObjectView
 	{
 		public ConfirmCommand(DistributedObjectView sender, float time) : base(sender, time) { }
 
-		public override void UpdateTime(PointEffect view, float time, float startTime) {
+		public override void UpdateTime(PointEffect view, float time, float startTime, float lag) {
 			view.endTime = startTime;
 		}
 	}

@@ -19,26 +19,26 @@ public abstract class DistributedCommand<TSender> : DistributedCommand where TSe
 		this.startTime = startTime;
 	}
 
-	public abstract void UpdateTime(TSender view, float time, float startTime);
+	public abstract void UpdateTime(TSender view, float time, float startTime, float lag);
 
 	public override sealed void UpdateTimeAll(float time)
 	{
-		UpdateTime(sender as TSender, time, startTime);
+		UpdateTime(sender as TSender, time, startTime, 0f);
 		if (sender != unit.serverView) {
-			UpdateTime(unit.serverView as TSender, time, startTime + LAG);
-			UpdateOnClients(time, startTime + 2f * LAG);
+			UpdateTime(unit.serverView as TSender, time, startTime + LAG, LAG);
+			UpdateOnClients(time, startTime + 2f * LAG, 2f * LAG);
 		} else {
-			UpdateOnClients(time, startTime + LAG);
+			UpdateOnClients(time, startTime + LAG, LAG);
 		}
 	}
 
-	private void UpdateOnClients(float time, float startTime)
+	private void UpdateOnClients(float time, float startTime, float lag)
 	{
 		if (sender != unit.clinet1View) {
-			UpdateTime(unit.clinet1View as TSender, time, startTime);
+			UpdateTime(unit.clinet1View as TSender, time, startTime, lag);
 		}
 		if (sender != unit.clinet2View) {
-			UpdateTime(unit.clinet2View as TSender, time, startTime);
+			UpdateTime(unit.clinet2View as TSender, time, startTime, lag);
 		}
 	}
 }
